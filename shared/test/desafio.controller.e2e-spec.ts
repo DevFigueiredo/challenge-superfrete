@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { DesafioSuperFreteModule } from 'apps/desafio-super-frete/src/desafio-super-frete.module';
+import { ChallengeSuperFreteModule } from 'apps/challenge-super-frete/src/challenge-super-frete.module';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [DesafioSuperFreteModule],
+      imports: [ChallengeSuperFreteModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();

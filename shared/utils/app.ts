@@ -21,8 +21,8 @@ export const createNestServer = (module: any) => {
       );
 
       const config = new DocumentBuilder()
-        .setTitle('Desafio Super Frete - API')
-        .setDescription('Desafio Super Frete - API')
+        .setTitle('Challenge Super Frete - API')
+        .setDescription('Challenge Super Frete - API')
         .setVersion('1.0')
         .build();
 

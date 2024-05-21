@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class DesafioUseCaseInputDTO {
+export class ChallengeUseCaseInputDTO {
   @ApiProperty()
   name: string;
 }
-export class DesafioUseCaseOutputDTO {
+export class ChallengeUseCaseOutputDTO {
   @ApiProperty()
   id: number;
 }

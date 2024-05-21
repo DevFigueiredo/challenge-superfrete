@@ -9,11 +9,11 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'eslint:recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
-    'google',
+    // 'eslint:recommended',
+    // 'plugin:import/errors',
+    // 'plugin:import/warnings',
+    // 'plugin:import/typescript',
+    // 'google',
   ],
   root: true,
   env: {
@@ -27,5 +27,9 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'prettier/prettier': 'off',
+    'linebreak-style': 'off',
+    'object-curly-spacing': 'off',
+    indent: 'off',
+    '@typescript-eslint/no-namespace': 'off',
   },
 };

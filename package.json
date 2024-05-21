@@ -1,5 +1,5 @@
 {
-  "name": "desafio-super-frete",
+  "name": "challenge-super-frete",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -11,7 +11,7 @@
     "start": "env-cmd -f .env nest start",
     "start:dev": "env-cmd -f .env nest start --watch",
     "start:debug": "env-cmd -f .env nest start --debug --watch",
-    "start:prod": "env-cmd -f .env node dist/apps/desafio-super-frete/main",
+    "start:prod": "env-cmd -f .env node dist/apps/challenge-super-frete/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "env-cmd -f .env jest --watch",
