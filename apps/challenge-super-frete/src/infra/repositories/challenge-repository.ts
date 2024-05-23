@@ -1,17 +1,7 @@
-import { Inject } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Firestore } from 'firebase-admin/firestore';
-namespace IChallengeRepository {
-  export type ISaveInput = {
-    name: string;
-  };
-  export type ISaveOutput = {
-    id: number;
-  };
-  export type Repository = {
-    save(data: ISaveInput): Promise<ISaveOutput>;
-  };
-}
-
+import { IChallengeRepository } from './interfaces/challenge-repository-interface';
+@Injectable()
 export class ChallengeRepository implements IChallengeRepository.Repository {
   constructor(@Inject('db') private readonly db: Firestore) {}
 

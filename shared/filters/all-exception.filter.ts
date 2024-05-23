@@ -3,18 +3,15 @@
   ArgumentsHost,
   HttpException,
   HttpServer,
-  Inject,
 } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
-import { LoggerWinston } from '@shared/utils/logger-winston';
-import RouteParser from '@shared/utils/route-parser';
+import { Logger } from 'shared/utils/logger';
 
 @Catch()
 export class AllExceptionsFilter extends BaseExceptionFilter {
   constructor(
     private readonly httpserver: HttpServer,
-    @Inject('LoggerWinston')
-    private logger?: LoggerWinston,
+    private logger?: Logger,
   ) {
     super(httpserver);
   }
@@ -28,33 +25,11 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
       else console.error(exception);
     }
 
-    // Exceções via Axios
-    if (
-      exception?.response?.status === 401 ||
-      exception?.response?.status === 403
-    ) {
-      const status = exception.response.status;
-      const message = exception.message;
-      this.logger.warn(message, {
-        labels: {
-          route: RouteParser.parseUrl(request.url),
-          url: request.url,
-        },
-      });
-
-      return response.status(status).json({
-        statusCode: status,
-        message: exception.response.data?.error,
-        path: request.url,
-      });
-    }
-
     if (exception instanceof HttpException) {
       const status = exception.getStatus();
       const message = exception.message;
       this.logger.warn(message, {
         labels: {
-          route: RouteParser.parseUrl(request.url),
           url: request.url,
         },
       });
@@ -69,7 +44,6 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
     const message = exception.message as any;
     this.logger.error(message, {
       labels: {
-        route: RouteParser.parseUrl(request.url),
         url: request.url,
       },
     });

@@ -15,7 +15,9 @@ export class ChallengeController {
     type: ChallengeUseCaseOutputDTO,
   })
   @Post()
-  save(@Body() body: ChallengeUseCaseInputDTO): ChallengeUseCaseOutputDTO {
+  save(
+    @Body() body: ChallengeUseCaseInputDTO,
+  ): Promise<ChallengeUseCaseOutputDTO> {
     return this.challengeUseCase.handle(body);
   }
 }

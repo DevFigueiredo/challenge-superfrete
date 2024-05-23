@@ -4,7 +4,7 @@
   "sourceRoot": "apps/challenge-super-frete/src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "webpack": true,
+    "webpack": false,
     "tsConfigPath": "apps/challenge-super-frete/tsconfig.app.json"
   },
   "monorepo": true,

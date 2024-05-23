@@ -1,9 +1,9 @@
 import configuration from 'shared/config/configuration';
-import { createNestServer } from '../../../shared/utils/app';
+import { createServer } from '../../../shared/utils/create-server';
 import { ChallengeSuperFreteModule } from './challenge-super-frete.module';
 
 const config = configuration();
-createNestServer(ChallengeSuperFreteModule)()
+createServer(ChallengeSuperFreteModule)()
   .then((app) => {
     if (!(config.environment === 'localhost'))
       console.log('🚀 Starting cloudfunction server...');

@@ -1,14 +1,16 @@
 import * as express from 'express';
 import * as fs from 'fs';
-import { NestFactory } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { useRequestLogging } from 'shared/middlewares/logger-middleware';
+import { AllExceptionsFilter } from 'shared/filters/all-exception.filter';
+import { Logger } from './logger';
 
 let cachedServer: express.Express;
 const isLocalhost = process.env.ENVIROMENT === 'localhost';
-
-export const createNestServer = (module: any) => {
+const logger = new Logger();
+export const createServer = (module: any) => {
   return async () => {
     if (!cachedServer) {
       const expressInstance = express();
@@ -16,9 +18,11 @@ export const createNestServer = (module: any) => {
         module,
         new ExpressAdapter(expressInstance),
         {
-          logger: isLocalhost ? console : false,
+          logger: isLocalhost ? logger : false,
         },
       );
+      const { httpAdapter } = app.get(HttpAdapterHost);
+      app.useGlobalFilters(new AllExceptionsFilter(httpAdapter, logger));
 
       const config = new DocumentBuilder()
         .setTitle('Challenge Super Frete - API')
