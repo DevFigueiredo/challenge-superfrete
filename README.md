@@ -5,7 +5,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Estrutura Node.js</a> para criar aplicativos do lado do servidor eficientes e escalonáveis.</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
@@ -19,31 +19,56 @@
     <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Desafio vaga Node.js Senior da empresa SuperFrete.
 
-## Installation
+## Instalação
 
 ```bash
 $ yarn install
 ```
 
-## Running the app
+## Configuração das Variáveis de Ambiente
+
+Para rodar a aplicação, você precisa configurar as variáveis de ambiente. Existem dois arquivos .env que você precisa configurar:
+
+1. .env.local: Para rodar a aplicação no ambiente local.
+2. .env: Para rodar a aplicação com o **emulador do Firebase**.
+
+Crie um arquivo **.env.local** na raiz do projeto e adicione as seguintes variáveis:
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+# ENVIRONMENT = localhost / dev
+ENVIRONMENT=localhost
+# LOG_FORMAT = json / colorize
+LOG_FORMAT=colorize
+# FIREBASE EMULATOR HOST
+FIRESTORE_EMULATOR_HOST="127.0.0.1:8080"
 ```
+
+Crie um arquivo **.env** na raiz do projeto e adicione as seguintes variáveis:
+
+```bash
+# ENVIRONMENT = localhost / dev
+ENVIRONMENT=dev
+# LOG_FORMAT = json / colorize
+LOG_FORMAT=json
+# FIREBASE EMULATOR HOST
+FIRESTORE_EMULATOR_HOST="127.0.0.1:8080"
+```
+
+## Iniciando o backend
+
+````bash
+# development
+$ yarn run start <appName>
+
+
+# firebase emulator
+$ yarn run start:emulator
+
 
 ## Test
 
@@ -56,42 +81,178 @@ $ yarn run test:e2e
 
 # test coverage
 $ yarn run test:cov
+````
+
+## Swagger
+
+A documentação da API está disponível via Swagger. O Swagger é uma poderosa ferramenta para visualizar e interagir com a API.
+
+### Acessando a Documentação do Swagger
+
+- Para acessar a documentação do Swagger, siga os passos abaixo:
+- Certifique-se de que o backend está em execução. Você pode iniciar o backend com o comando:
+
+```bash
+# development
+$ yarn run start <appName>
+
 ```
 
-## Support
+OU
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+# firebase emulator
+$ yarn run start:emulator
+```
 
-## Stay in touch
+### Abra seu navegador e vá para o seguinte endereço:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+http://localhost:3000/docs
+```
 
-## License
+OU
 
-Nest is [MIT licensed](LICENSE).
+### Abra seu navegador e vá para o seguinte endereço:
 
-## DESAFIO TECNICO
+```bash
+http://127.0.0.1:5001/desafio-super-frete/us-central1/challenge/docs
+```
 
-Conforme combinado, segue abaixo o Teste técnico para você realizar. Por favor, responda este e-mail com o prazo que você precisa para concluí-lo e quaisquer dúvidas estou à disposição.
+### Usando a Documentação do Swagger
 
-O propósito deste teste é entender como você busca informações usando os recursos disponíveis na internet e como estrutura a arquitetura de um projeto.
+1. **Exploração das Endpoints:** No Swagger UI, você pode explorar todas as endpoints disponíveis na API, ver detalhes sobre cada endpoint, os parâmetros necessários, e os tipos de resposta.
+2. **Testes de Endpoints:** Você pode testar as endpoints diretamente do Swagger UI. Para isso, clique na endpoint que deseja testar, insira os parâmetros necessários e clique em "Execute".
 
-Teste
+---
 
-Faça uma arquitetura que possa ser utilizada para escalar o projeto para centenas de funções;
-Deverá utilizar o firebase como servidor e dentro do firebase utilizar dois recursos, que são: functions e firestore;
-Criar uma função no firebase functions que cria um novo registro em uma collection do firestore;
-Ao adicionar esse registro, deve-se usar o trigger do firestore (onCreate) para setar o atributo increment_id no registro criado;
-Cada registro tem que utilizar o próximo increment_id disponível. Ex: se o último for 3, deverá utilizar o 4, ou se o último for 10, deve-se utilizar o 11;
-A chamada para a function deve ser um POST com o body em json com o atributo name;
-Faça a arquitetura do código utilizando o princípio de design que preferir. E deve conter testes automatizados;
-Pode rodar todo o projeto do firebase via emulador, a documentação do próprio firebase tem toda a explicação.
+## Estrutura de Pastas do Projeto
 
-Por último, adicione uma mini documentação do código criado no README explicando o design de arquitetura utilizado e como instalar as libs e rodar o código em questão.
+Este documento descreve a estrutura de pastas do projeto para facilitar a navegação e compreensão do código.
 
-Ao finalizar, envie-nos por e-mail também o link do github do projeto para que possamos analisar o código.
+```plaintext
+apps/
+└── challenge/
+    └── src/
+        ├── controllers/
+        │   ├── challenge.controller.spec.ts
+        │   └── challenge.controller.ts
+        ├── infra/
+        │   └── repositories/
+        │       ├── interfaces/
+        │       ├── challenge-repository.spec.ts
+        │       └── challenge-repository.ts
+        ├── triggers/
+        │   └── challenge.trigger.ts
+        ├── use-cases/
+        │   ├── challenge-use-case.dto.ts
+        │   ├── challenge-use-case.schema.ts
+        │   ├── challenge-use-case.spec.ts
+        │   └── challenge-use-case.ts
+        ├── challenge.module.ts
+        ├── function.ts
+        └── main.ts
+shared/
+├── @types/
+│   ├── index.d.ts
+├── config/
+│   ├── configuration.spec.ts
+│   └── configuration.ts
+├── docs/
+├── filters/
+│   ├── all-exception.filter.spec.ts
+│   └── all-exception.filter.ts
+├── middlewares/
+│   └── logger-middleware.ts
+├── test/
+│   ├── e2e/
+│   │   └── challenge.controller.e2e-spec.ts
+│   ├── mocks/
+│   │   └── challenge-mock.ts
+│   └── jest-e2e.json
+└── utils/
+    ├── create-server.ts
+    ├── database.ts
+    ├── function-export.ts
+    ├── generate-uuid.ts
+    ├── logger.spec.ts
+    ├── logger.ts
+    └── set-incremental-id.spec.ts
+    └── set-incremental-id.ts
 
-Qualquer dúvida estou à disposição.
-Obrigada e boa sorte!
+```
+
+Descrição das Pastas
+
+- **apps/**
+  Pasta raiz onde todos os aplicativos estão localizados.
+
+- **apps/challenge/**
+  Diretório do aplicativo específico denominado "challenge".
+
+- **apps/challenge/src/**
+  Pasta principal contendo todo o código-fonte do aplicativo.
+
+- **apps/challenge/src/controllers/**
+  Contém os controladores da aplicação, responsáveis por lidar com as requisições e respostas HTTP.
+
+- **apps/challenge/src/infra/**
+  Contém a infraestrutura da aplicação, incluindo repositórios e interfaces.
+
+- **apps/challenge/src/infra/repositories/**
+  Contém os repositórios que interagem com a base de dados.
+
+- **apps/challenge/src/infra/repositories/interfaces/**
+  Contém interfaces que definem contratos para os repositórios.
+
+- **apps/challenge/src/triggers/**
+  Contém os gatilhos/eventos que iniciam certas operações na aplicação.
+
+- **apps/challenge/src/use-cases/**
+  Contém os casos de uso da aplicação, representando a lógica de negócios.
+
+- **shared/**
+  Diretório para recursos compartilhados entre diferentes partes do aplicativo.
+
+- **shared/@types/**
+  Contém definições de tipos TypeScript que podem ser usados por todo o projeto.
+
+- **shared/config/**
+  Contém arquivos de configuração do projeto, como variaveis de ambiente.
+
+- **shared/docs/**
+  Contém documentação geral do projeto. Como swaggger, readmes, explicações do projeto.s
+
+- **shared/filters/**
+  Contém filtros globais para tratamento de exceções.
+
+- **shared/middlewares/**
+  Contém middlewares reutilizáveis no projeto.
+
+- **shared/test/**
+  Contém arquivos e pastas relacionados a testes.
+
+- **shared/test/e2e/**
+  Contém testes de ponta a ponta (end-to-end).
+
+- **shared/test/mocks/**
+  Contém mocks que são reutilizados para usarem nos testes.
+
+- **shared/utils/**
+  Contém utilitários e funções auxiliares.
+
+---
+
+## Repositorio originado por Desafio Tecnico da SuperFrete
+
+- [x] Faça uma arquitetura que possa ser utilizada para escalar o projeto para centenas de funções;
+
+- [x] Deverá utilizar o firebase como servidor e dentro do firebase utilizar dois recursos, que são: functions e firestore;
+- [x] Criar uma função no firebase functions que cria um novo registro em uma collection do firestore;
+- [x] Ao adicionar esse registro, deve-se usar o trigger do firestore (onCreate) para setar o atributo increment_id no registro criado;
+- [x] Cada registro tem que utilizar o próximo increment_id disponível. Ex: se o último for 3, deverá utilizar o 4, ou se o último for 10, deve-se utilizar o 11;
+- [x] A chamada para a function deve ser um POST com o body em json com o atributo name;
+- [x] Faça a arquitetura do código utilizando o princípio de design que preferir. E deve conter testes automatizados;
+- [x] Pode rodar todo o projeto do firebase via emulador, a documentação do próprio firebase tem toda a explicação.
+- [x] Por último, adicione uma mini documentação do código criado no README explicando o design de arquitetura utilizado e como instalar as libs e rodar o código em questão.
+- [x] Ao finalizar, envie-nos por e-mail também o link do github do projeto para que possamos analisar o código.

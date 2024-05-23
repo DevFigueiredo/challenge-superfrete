@@ -11,21 +11,17 @@
   "main": "dist/functions.js",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "env-cmd -f .env.local nest start",
     "start:dev": "env-cmd -f .env.local nest start --watch",
+    "start:emulator": "npm run build && firebase emulators:start",
     "start:debug": "env-cmd -f .env.local nest start --debug --watch",
-    "start:prod": "env-cmd -f .env.local node dist/apps/challenge-super-frete/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "test:watch": "env-cmd -f .env.local jest --watch",
     "test:cov": "env-cmd -f .env.local jest --coverage",
     "test:debug": "env-cmd -f .env.local node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "env-cmd -f .env.local jest --config ./shared/test/jest-e2e.json",
-    "start:functions": "npm run build && firebase emulators:start --only functions",
-    "start:shell": "npm run build && firebase functions:shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "test": "jest",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

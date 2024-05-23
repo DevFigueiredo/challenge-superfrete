@@ -29,7 +29,7 @@ export const createServer = (module: any) => {
         .setDescription('Challenge Super Frete - API')
         .setVersion('1.0')
         .addServer(
-          'http://127.0.0.1:5001/desafio-super-frete/us-central1/challenge_super_frete',
+          'http://127.0.0.1:5001/desafio-super-frete/us-central1/challenge',
           'URL do Emulador do Firebase',
         )
         .addServer('http://127.0.0.1:3000', 'URL Local')

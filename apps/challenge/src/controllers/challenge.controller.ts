@@ -4,7 +4,7 @@ import {
   ChallengeUseCaseInputDTO,
   ChallengeUseCaseOutputDTO,
 } from '../use-cases/challenge-use-case.dto';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Challenge')
 @Controller()
@@ -14,8 +14,18 @@ export class ChallengeController {
     description: 'Challenge criado!',
     type: ChallengeUseCaseOutputDTO,
   })
+  @ApiBadRequestResponse({
+    description: 'BadRequest',
+    schema: {
+      example: {
+        statusCode: 400,
+        message: 'Field name must contain at least 1 character.',
+        path: '/challenge',
+      },
+    },
+  })
   @HttpCode(201)
-  @Post()
+  @Post('challenge')
   save(
     @Body() body: ChallengeUseCaseInputDTO,
   ): Promise<ChallengeUseCaseOutputDTO> {
