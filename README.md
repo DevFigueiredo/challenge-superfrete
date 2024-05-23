@@ -63,24 +63,24 @@ FIRESTORE_EMULATOR_HOST="127.0.0.1:8080"
 
 ````bash
 # development
-$ yarn run start <appName>
+$ yarn start <appName>
 
 
 # firebase emulator
-$ yarn run start:emulator
+$ yarn start:emulator
 
 
 ## Test
 
 ```bash
 # unit tests
-$ yarn run test
+$ yarn test
 
 # e2e tests
-$ yarn run test:e2e
+$ yarn test:e2e
 
 # test coverage
-$ yarn run test:cov
+$ yarn test:cov
 ````
 
 ## Swagger
@@ -94,7 +94,7 @@ A documentação da API está disponível via Swagger. O Swagger é uma poderosa
 
 ```bash
 # development
-$ yarn run start <appName>
+$ yarn start <appName>
 
 ```
 
@@ -102,7 +102,7 @@ OU
 
 ```bash
 # firebase emulator
-$ yarn run start:emulator
+$ yarn start:emulator
 ```
 
 ### Abra seu navegador e vá para o seguinte endereço:
