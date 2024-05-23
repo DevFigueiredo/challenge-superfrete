@@ -20,10 +20,6 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
-    if (process.env.ENVIROMENT === 'localhost') {
-      if (exception.response) console.error(exception.response);
-      else console.error(exception);
-    }
 
     if (exception instanceof HttpException) {
       const status = exception.getStatus();

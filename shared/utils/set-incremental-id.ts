@@ -24,10 +24,6 @@ export const setIncrementalId = async (
 
     // Atualiza o documento criado com o novo ID incremental
     await snapshot.ref.update({ incremental_id: newId });
-
-    console.log(
-      `Incremental ID ${newId} set for document in ${collectionName} collection`,
-    );
   } catch (error) {
     console.error(
       `Erro ao definir incremental_id para a coleção ${collectionName}:`,

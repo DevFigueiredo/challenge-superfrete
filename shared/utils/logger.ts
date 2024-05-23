@@ -1,12 +1,11 @@
 import { Injectable, LoggerService, Scope } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import * as winston from 'winston';
 
 @Injectable({ scope: Scope.REQUEST })
 export class Logger implements LoggerService {
   private logger: winston.Logger;
   constructor() {
-    const isLocalhost = process.env.ENVIRONMENT == 'localhost';
+    const isColorize = process.env.LOG_FORMAT == 'colorize';
     const colorfulFormat = winston.format.combine(
       winston.format((info) => {
         info.level = info.level.toUpperCase();
@@ -23,7 +22,7 @@ export class Logger implements LoggerService {
       ),
     );
     this.logger = winston.createLogger({
-      format: isLocalhost ? colorfulFormat : winston.format.json(),
+      format: isColorize ? colorfulFormat : winston.format.json(),
       transports: [new winston.transports.Console()],
     });
   }
