@@ -17,8 +17,17 @@ describe('ChallengeController', () => {
   });
 
   describe('ChallengeController - Tests', () => {
-    it('should return "Hello World!"', () => {
-      expect(sut.save({ name: 'any_name' })).toBe('Hello World!');
+    it('should save data in useCase and generate response UID', async () => {
+      jest
+        .spyOn(challengeUseCase, 'handle')
+        .mockResolvedValue({ uid: 'any_uid' });
+      const requestBody = { name: 'any_name' };
+
+      const response = await sut.save(requestBody);
+
+      expect(response).toEqual({ uid: 'any_uid' });
+      expect(challengeUseCase.handle).toHaveBeenCalledWith(requestBody);
+      expect(challengeUseCase.handle).toHaveBeenCalledTimes(1);
     });
   });
 });

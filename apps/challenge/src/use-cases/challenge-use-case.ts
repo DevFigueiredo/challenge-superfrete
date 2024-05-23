@@ -5,7 +5,7 @@ import {
 } from './challenge-use-case.dto';
 import { challengeUseCaseInputSchema } from './challenge-use-case.schema';
 import { ChallengeRepository } from '../infra/repositories/challenge-repository';
-import { generateUUID } from 'shared/utils/generate-uuid';
+import { generateUUID } from '../../../../shared/utils/generate-uuid';
 
 @Injectable()
 export class ChallengeUseCase {

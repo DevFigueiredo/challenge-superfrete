@@ -3,8 +3,8 @@ import * as fs from 'fs';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { useRequestLogging } from 'shared/middlewares/logger-middleware';
-import { AllExceptionsFilter } from 'shared/filters/all-exception.filter';
+import { useRequestLogging } from '../middlewares/logger-middleware';
+import { AllExceptionsFilter } from '../filters/all-exception.filter';
 import { Logger } from './logger';
 
 let cachedServer: express.Express;

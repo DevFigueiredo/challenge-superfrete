@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { ChallengeUseCase } from '../use-cases/challenge-use-case';
 import {
   ChallengeUseCaseInputDTO,
@@ -14,6 +14,7 @@ export class ChallengeController {
     description: 'Challenge criado!',
     type: ChallengeUseCaseOutputDTO,
   })
+  @HttpCode(201)
   @Post()
   save(
     @Body() body: ChallengeUseCaseInputDTO,

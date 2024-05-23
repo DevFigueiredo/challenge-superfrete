@@ -15,7 +15,7 @@ export const setIncrementalId = async (
 
     let lastId = 0;
     if (!querySnapshot.empty) {
-      const lastDocument = querySnapshot.docs[0];
+      const lastDocument = querySnapshot?.docs[0];
       lastId = lastDocument.data().incremental_id;
     }
 
@@ -24,7 +24,7 @@ export const setIncrementalId = async (
 
     // Atualiza o documento criado com o novo ID incremental
     await snapshot.ref.update({ incremental_id: newId });
-  } catch (error) {
+  } catch (error: any) {
     console.error(
       `Erro ao definir incremental_id para a coleção ${collectionName}:`,
       error,

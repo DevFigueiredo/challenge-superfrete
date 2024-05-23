@@ -1,6 +1,6 @@
 import { INestApplication } from '@nestjs/common';
 import * as morganBody from 'morgan-body';
-import { Logger } from 'shared/utils/logger';
+import { Logger } from '../utils/logger';
 
 export function useRequestLogging(app: INestApplication) {
   const logger = new Logger();

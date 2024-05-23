@@ -7,7 +7,7 @@ export const functionExport = (app: () => Promise<Express>) => {
   const firebaseFunction = onRequest(async (req, res) => {
     // Obtém a instância do aplicativo Express
     const server = await app();
-    // Chama o aplicativo Express com a requisição e resposta do Firebase Functions
+    // Chama o Nestjs com a requisição e resposta do Firebase Functions
     server(req, res);
   });
   // Retorna a função do Firebase Functions
