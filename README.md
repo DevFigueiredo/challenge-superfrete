@@ -113,7 +113,7 @@ http://localhost:3000/docs
 
 OU
 
-### Abra seu navegador e vá para o seguinte endereço:
+### Caso esteja executando pelo emulador do firebase, abra seu navegador e vá para o seguinte endereço:
 
 ```bash
 http://127.0.0.1:5001/desafio-super-frete/us-central1/challenge/docs

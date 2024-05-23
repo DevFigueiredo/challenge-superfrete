@@ -4,7 +4,12 @@ import {
   ChallengeUseCaseInputDTO,
   ChallengeUseCaseOutputDTO,
 } from '../use-cases/challenge-use-case.dto';
-import { ApiBadRequestResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiCreatedResponse,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('Challenge')
 @Controller()
@@ -21,6 +26,14 @@ export class ChallengeController {
         statusCode: 400,
         message: 'Field name must contain at least 1 character.',
         path: '/challenge',
+      },
+    },
+  })
+  @ApiCreatedResponse({
+    description: 'Created',
+    schema: {
+      example: {
+        uid: 'any_uid',
       },
     },
   })
