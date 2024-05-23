@@ -1,9 +1,11 @@
 import { firestore } from 'firebase-admin';
 import { database } from './database';
+import { Logger } from './logger';
 
 export const setIncrementalId = async (
   snapshot: firestore.DocumentSnapshot,
   collectionName: string,
+  logger: Logger | typeof console = console,
 ): Promise<void> => {
   try {
     // Obtém o último ID registrado na coleção
@@ -25,7 +27,7 @@ export const setIncrementalId = async (
     // Atualiza o documento criado com o novo ID incremental
     await snapshot.ref.update({ incremental_id: newId });
   } catch (error: any) {
-    console.error(
+    logger.error(
       `Erro ao definir incremental_id para a coleção ${collectionName}:`,
       error,
     );

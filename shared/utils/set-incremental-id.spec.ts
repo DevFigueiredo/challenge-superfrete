@@ -1,6 +1,8 @@
 import { firestore } from 'firebase-admin';
 import { setIncrementalId } from './set-incremental-id';
 import * as databaseModule from './database'; // Importa o módulo de banco de dados para facilitar a substituição do objeto database
+import { Logger } from './logger';
+import { MockProxy, mock } from 'jest-mock-extended';
 
 jest.mock('./database', () => ({
   database: {
@@ -18,6 +20,7 @@ function returnMockCollection(snapshot) {
   });
 }
 describe('setIncrementalId', () => {
+  const logger: MockProxy<Logger> = mock();
   const mockDocumentReference = {
     update: jest.fn(),
   };
@@ -47,7 +50,7 @@ describe('setIncrementalId', () => {
       .spyOn(databaseModule.database, 'collection')
       .mockImplementation(mockCollection);
 
-    await setIncrementalId(mockDocumentSnapshot, 'challenge');
+    await setIncrementalId(mockDocumentSnapshot, 'challenge', logger);
 
     expect(databaseModule.database.collection).toHaveBeenCalledWith(
       'challenge',
@@ -69,7 +72,7 @@ describe('setIncrementalId', () => {
       .spyOn(databaseModule.database, 'collection')
       .mockImplementation(mockCollection);
 
-    await setIncrementalId(mockDocumentSnapshot, 'challenge');
+    await setIncrementalId(mockDocumentSnapshot, 'challenge', logger);
 
     expect(databaseModule.database.collection).toHaveBeenCalledWith(
       'challenge',
@@ -89,7 +92,7 @@ describe('setIncrementalId', () => {
       .spyOn(databaseModule.database, 'collection')
       .mockImplementation(mockCollection);
     try {
-      await setIncrementalId(mockDocumentSnapshot, 'challenge');
+      await setIncrementalId(mockDocumentSnapshot, 'challenge', logger);
     } catch (error) {}
 
     expect(databaseModule.database.collection).toHaveBeenCalledWith(
