@@ -1,9 +1,12 @@
 import { ChallengeModule } from 'apps/challenge/src/challenge.module';
 import { createServer } from './shared/utils/create-server';
 import { functionExport } from './shared/utils/function-export';
-import { onChallengeCreate } from 'shared/triggers/challenge.trigger';
+import { triggers } from 'shared/triggers';
 
 export const challenge_super_frete = functionExport(
   createServer(ChallengeModule),
 );
-export { onChallengeCreate };
+
+triggers.forEach((trigger, index) => {
+  exports[`trigger_${index}`] = trigger;
+});
