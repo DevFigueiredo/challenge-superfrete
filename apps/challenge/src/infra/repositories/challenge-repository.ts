@@ -9,6 +9,5 @@ export class ChallengeRepository implements IChallengeRepository.Repository {
     data: IChallengeRepository.ISaveInput,
   ): Promise<IChallengeRepository.ISaveOutput> {
     await this.db.collection('challenge').add(data);
-    return { id: 1 };
   }
 }

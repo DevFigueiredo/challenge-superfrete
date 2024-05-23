@@ -6,5 +6,5 @@ export class ChallengeUseCaseInputDTO {
 }
 export class ChallengeUseCaseOutputDTO {
   @ApiProperty()
-  id: number;
+  uid: string;
 }

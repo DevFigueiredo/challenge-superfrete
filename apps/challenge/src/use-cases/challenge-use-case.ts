@@ -5,6 +5,7 @@ import {
 } from './challenge-use-case.dto';
 import { challengeUseCaseInputSchema } from './challenge-use-case.schema';
 import { ChallengeRepository } from '../infra/repositories/challenge-repository';
+import { generateUUID } from 'shared/utils/generate-uuid';
 
 @Injectable()
 export class ChallengeUseCase {
@@ -13,11 +14,11 @@ export class ChallengeUseCase {
   async handle(
     params: ChallengeUseCaseInputDTO,
   ): Promise<ChallengeUseCaseOutputDTO> {
+    const uid = generateUUID();
     const data = challengeUseCaseInputSchema.parse(params);
-    await this.challengeRepository.save(data);
-    console.log(data);
+    await this.challengeRepository.save({ ...data, uid });
     return {
-      id: 1,
+      uid,
     };
   }
 }
