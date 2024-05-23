@@ -1,22 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/challenge-super-frete/src",
+  "sourceRoot": "apps",
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": false,
-    "tsConfigPath": "apps/challenge-super-frete/tsconfig.app.json"
+    "tsConfigPath": "tsconfig.build.json"
   },
   "monorepo": true,
-  "root": "apps/challenge-super-frete",
+  "root": "apps",
   "projects": {
-    "challenge-super-frete": {
+    "challenge": {
       "type": "application",
-      "root": "apps/challenge-super-frete",
+      "root": "apps/challenge",
       "entryFile": "main",
-      "sourceRoot": "apps/challenge-super-frete/src",
+      "sourceRoot": "apps/challenge/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/challenge-super-frete/tsconfig.app.json"
+        "tsConfigPath": "apps/challenge/tsconfig.app.json"
       }
     }
   }

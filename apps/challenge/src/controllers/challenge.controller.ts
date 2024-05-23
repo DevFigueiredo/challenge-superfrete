@@ -6,7 +6,7 @@ import {
 } from '../use-cases/challenge-use-case.dto';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('ChallengeSuperFrete')
+@ApiTags('Challenge')
 @Controller()
 export class ChallengeController {
   constructor(private readonly challengeUseCase: ChallengeUseCase) {}

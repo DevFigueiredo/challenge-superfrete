@@ -25,4 +25,4 @@ import { ChallengeRepository } from './infra/repositories/challenge-repository';
     },
   ],
 })
-export class ChallengeSuperFreteModule {}
+export class ChallengeModule {}
