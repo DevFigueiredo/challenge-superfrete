@@ -182,7 +182,7 @@ shared/
 
 ```
 
-Descrição das Pastas
+### Descrição das Pastas
 
 - **apps/**
   Pasta raiz onde todos os aplicativos estão localizados.
