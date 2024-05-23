@@ -36,6 +36,11 @@ describe('Logger', () => {
   });
 
   it('should call winston logger methods with correct arguments', () => {
+    logger.info('Test log message');
+    expect(winston.createLogger().info).toHaveBeenCalledWith(
+      'Test log message',
+      undefined,
+    );
     logger.info('Test info message');
     expect(winston.createLogger().info).toHaveBeenCalledWith(
       'Test info message',
@@ -68,6 +73,11 @@ describe('Logger', () => {
   });
 
   it('should call winston logger methods with correct arguments with parameters', () => {
+    logger.info('Test log message', { example: `any_example` });
+    expect(winston.createLogger().info).toHaveBeenCalledWith(
+      'Test log message',
+      { example: `any_example` },
+    );
     logger.info('Test info message', { example: `any_example` });
     expect(winston.createLogger().info).toHaveBeenCalledWith(
       'Test info message',
